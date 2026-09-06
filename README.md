@@ -2,6 +2,8 @@
 
 A simple command-line task manager built with Go.
 
+This project was created as part of my Go learning journey, focusing on Go fundamentals, project structure, structs, methods, pointers, error handling, and separation of concerns.
+
 ## Features
 
 * Add tasks
