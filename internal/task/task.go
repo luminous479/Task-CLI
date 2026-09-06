@@ -8,11 +8,6 @@ type Task struct{
 	Completed bool
 }
 
-func (t *Task) Complete() {
-	t.Completed = true 
-}
-
-
 type Manager struct {
 	tasks []Task
 } 
@@ -35,3 +30,25 @@ func (m Manager) ListTasks() {
 	}		
 	
 }
+func (m *Manager) CompleteTask(id int) error {
+    for i, task := range m.tasks {
+        if task.ID == id {
+            m.tasks[i].Completed = true
+            return nil
+        }
+    }
+
+    return fmt.Errorf("task with ID %d not found", id)
+}
+
+func (m *Manager) DeleteTask(id int) error {
+	for i, task := range m.tasks {
+		if task.ID == id {
+			m.tasks = append(m.tasks[:i], m.tasks[i+1:]...)
+			return nil
+		}
+	}
+
+	return fmt.Errorf("task with ID %d not found", id)
+}
+ 
